@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ListGo</string>
+    <string name="greeting">Good to see you, User.</string>
+    <string name="phrase">One step at a time</string>
+    <string name="hint">Wanna do something..</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tasks">tasks</string>
+</resources>
