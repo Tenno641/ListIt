@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <!-- center guideline -->
     <androidx.constraintlayout.widget.Guideline
@@ -36,10 +36,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.48" />
 
     <TextView
-        android:id="@+id/appName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -52,42 +51,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/taskED"
+        android:id="@+id/userNameED"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:autofillHints=""
         android:background="@drawable/rounded_edittext"
         android:elevation="1dp"
-        android:ems="17"
-        android:hint="@string/hint"
-        android:imeOptions="actionDone"
+        android:hint="@string/you_name"
         android:inputType="text"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:textColor="@color/dark"
         android:textColorHint="@color/black_light"
         android:translationZ="1dp"
-        app:layout_constraintEnd_toStartOf="@id/taskBTN"
+        app:layout_constraintEnd_toStartOf="@id/rememberMeButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottomGuideline"
         app:layout_goneMarginStart="16dp" />
 
     <Button
-        android:id="@+id/taskBTN"
+        android:id="@+id/rememberMeButton"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:padding="8dp"
         android:background="@drawable/rounded_edittext"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/tasks"
+        android:text="@string/remember_me"
+        android:textSize="12sp"
         android:textColor="@color/dark_orange"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/taskED" />
+        app:layout_constraintTop_toTopOf="@id/userNameED" />
 
     <TextView
         android:id="@+id/greeting"
@@ -103,9 +100,10 @@
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <TextView
+        android:id="@+id/userNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="userName"
+        android:text="@string/empty"
         android:fontFamily="sans-serif-medium"
         android:textAlignment="center"
         android:textColor="@color/dark"
@@ -114,12 +112,13 @@
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <TextView
+        android:id="@+id/phrases"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/phrase"
+        android:text="May I know you ?"
         app:layout_constraintTop_toBottomOf="@id/greeting"
         android:layout_marginTop="16dp"/>
 
