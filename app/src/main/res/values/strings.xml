@@ -11,4 +11,9 @@
     <string name="you_name">You name..</string>
     <string name="remember">I\'ll remember that</string>
     <string name="remember_me">Remember me</string>
+    <string name="set_time">Set time</string>
+    <string name="username">userName</string>
+    <string name="search_for_tasks">Search for tasks..</string>
+    <string name="cancel">CANCEL</string>
+    <string name="save">SAVE</string>
 </resources>

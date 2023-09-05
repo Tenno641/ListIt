@@ -5,12 +5,10 @@
     android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/verticalGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -21,11 +19,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <!-- center guideline -->
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/centerGuideline"
+        android:id="@+id/topGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -40,15 +38,18 @@
 
     <TextView
         android:id="@+id/appName"
-        android:layout_width="match_parent"
+        android:paddingStart="128dp"
+        android:paddingEnd="48dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/app_name"
+        android:text="MY SPACE"
         android:textAlignment="center"
         android:textColor="@color/dark"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/homeButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -56,12 +57,11 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="64dp"
         android:autofillHints=""
         android:background="@drawable/rounded_edittext"
         android:elevation="1dp"
-        android:ems="17"
         android:hint="@string/hint"
         android:imeOptions="actionDone"
         android:inputType="text"
@@ -69,23 +69,38 @@
         android:paddingEnd="16dp"
         android:textColor="@color/dark"
         android:textColorHint="@color/black_light"
+        android:textStyle="italic"
         android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/taskBTN"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottomGuideline"
-        app:layout_goneMarginStart="16dp" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/appName"
+        app:layout_constraintBottom_toBottomOf="@id/appName"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:backgroundTint="@color/orange"
+        android:drawableTop="@drawable/ic_baseline_refresh_24"
+        android:paddingTop="12dp"
+        app:layout_constraintStart_toEndOf="@id/appName"
+        app:layout_constraintEnd_toEndOf="@id/taskBTN"/>
 
     <Button
         android:id="@+id/taskBTN"
-        android:layout_width="wrap_content"
+        android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_edittext"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/tasks"
-        android:textColor="@color/dark_orange"
-        android:textStyle="bold"
+        android:backgroundTint="@color/orange"
+        android:drawableTop="@drawable/ic_baseline_keyboard_double_arrow_up_24"
+        android:paddingTop="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/taskED"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/taskED" />
 
@@ -99,28 +114,55 @@
         android:textAlignment="center"
         android:textColor="@color/dark"
         android:textSize="26sp"
-        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <TextView
+        android:id="@+id/userNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="userName"
         android:fontFamily="sans-serif-medium"
+        android:text="@string/username"
         android:textAlignment="center"
-        android:textColor="@color/dark"
+        android:textColor="@color/dark_orange"
         android:textSize="26sp"
         app:layout_constraintStart_toEndOf="@id/greeting"
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <TextView
+        android:id="@+id/phrase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/phrase"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/phrase"
-        app:layout_constraintTop_toBottomOf="@id/greeting"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintTop_toBottomOf="@id/greeting" />
+
+    <Button
+        android:id="@+id/setTimeButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button_orange"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/set_time"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@id/taskED"
+        app:layout_constraintStart_toStartOf="@id/taskED" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/todayRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toTopOf="@id/topGuideline"
+        app:layout_constraintBottom_toBottomOf="@id/bottomGuideline"
+        tools:listitem="@layout/custom_task"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

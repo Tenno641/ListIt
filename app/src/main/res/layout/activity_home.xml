@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/taskED"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="48dp"-->
+    <!--        android:layout_marginStart="8dp"-->
+    <!--        android:layout_marginTop="32dp"-->
+    <!--        android:layout_marginEnd="8dp"-->
+    <!--        android:autofillHints=""-->
+    <!--        android:background="@drawable/rounded_edittext"-->
+    <!--        android:elevation="1dp"-->
+    <!--        android:hint="@string/search_for_tasks"-->
+    <!--        android:imeOptions="actionDone"-->
+    <!--        android:inputType="text"-->
+    <!--        android:paddingStart="16dp"-->
+    <!--        android:paddingEnd="16dp"-->
+    <!--        android:textColor="@color/dark"-->
+    <!--        android:textColorHint="@color/black_light"-->
+    <!--        android:textStyle="italic"-->
+    <!--        android:translationZ="1dp"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/taskBTN"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/taskBTN"-->
+    <!--        android:layout_width="48dp"-->
+    <!--        android:layout_height="48dp"-->
+    <!--        android:layout_marginStart="8dp"-->
+    <!--        android:layout_marginEnd="8dp"-->
+    <!--        android:background="@drawable/rounded_edittext"-->
+    <!--        android:backgroundTint="@color/orange"-->
+    <!--        android:drawableTop="@drawable/ic_baseline_search_24"-->
+    <!--        android:paddingTop="12dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/taskED"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/taskED" />-->
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/searchRV"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginTop="32dp"-->
+    <!--        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/guideline3"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/taskBTN"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/taskED"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/taskED"-->
+    <!--        tools:listitem="@layout/custom_task" />-->
+
+
+
+    <Button
+        android:id="@+id/mySpaceCategory"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_button_orange"
+        android:backgroundTint="@color/silver"
+        android:padding="32dp"
+        android:text="my space"
+        android:textColor="@color/orange"
+        android:textStyle="italic|bold"
+        app:layout_constraintEnd_toEndOf="@id/guideline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/laterCategory"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_button_orange"
+        android:backgroundTint="@color/silver"
+        android:padding="32dp"
+        android:text="Later"
+        android:textColor="@color/orange"
+        android:textStyle="italic|bold"
+        app:layout_constraintStart_toStartOf="@id/guideline4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/custom_category"
+        app:layout_constraintStart_toStartOf="@id/mySpaceCategory"
+        app:layout_constraintEnd_toEndOf="@id/laterCategory"
+        app:layout_constraintTop_toBottomOf="@id/mySpaceCategory"
+        app:layout_constraintBottom_toTopOf="@id/newCategoryButton" />
+
+    <Button
+        android:id="@+id/newCategoryButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_button_orange"
+        android:padding="16dp"
+        android:text="new Category"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
