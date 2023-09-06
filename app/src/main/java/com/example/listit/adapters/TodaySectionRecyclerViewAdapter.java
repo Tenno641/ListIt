@@ -11,17 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.listit.R;
 import com.example.listit.TaskSelector;
+import com.example.listit.data.DataHolder;
 import com.example.listit.data.TaskModel;
-
-import java.util.List;
 
 public class TodaySectionRecyclerViewAdapter extends RecyclerView.Adapter<TodaySectionRecyclerViewAdapter.ViewHolder> {
 
-    List<TaskModel> taskModels;
     TaskSelector taskSelector;
 
-    public TodaySectionRecyclerViewAdapter(List<TaskModel> taskModels, TaskSelector taskSelector) {
-        this.taskModels = taskModels;
+    public TodaySectionRecyclerViewAdapter(TaskSelector taskSelector) {
         this.taskSelector = taskSelector;
     }
 
@@ -37,7 +34,7 @@ public class TodaySectionRecyclerViewAdapter extends RecyclerView.Adapter<TodayS
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        TaskModel model = taskModels.get(position);
+        TaskModel model = DataHolder.tasks.get(position);
 
         holder.body.setText(model.getBody());
         holder.time.setText(model.getTime());
@@ -47,7 +44,7 @@ public class TodaySectionRecyclerViewAdapter extends RecyclerView.Adapter<TodayS
 
     @Override
     public int getItemCount() {
-        return taskModels.size();
+        return DataHolder.tasks.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,7 +61,6 @@ public class TodaySectionRecyclerViewAdapter extends RecyclerView.Adapter<TodayS
             taskCardView = itemView.findViewById(R.id.taskCardView);
 
             itemView.setOnClickListener(v -> taskSelector.onItemClick(getAdapterPosition()));
-
 
         }
     }

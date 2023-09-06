@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements TaskSelector {
     RecyclerView todayRecyclerView;
 
     SharedPreferences sharedPreferences;
-    Intent intentForSettingName, homeScreenIntent;
+    Intent intentForSettingName;
 
     TodaySectionRecyclerViewAdapter todaySectionRecyclerViewAdapter;
     DatabaseAdapter databaseAdapter;
@@ -68,9 +68,9 @@ public class MainActivity extends Activity implements TaskSelector {
 
         databaseAdapter = new DatabaseAdapter(this);
 
-        greetingCheck();
+        emptyListCheck();
 
-        todaySectionRecyclerViewAdapter = new TodaySectionRecyclerViewAdapter(DataHolder.tasks, this);
+        todaySectionRecyclerViewAdapter = new TodaySectionRecyclerViewAdapter(this);
         todayRecyclerView.setAdapter(todaySectionRecyclerViewAdapter);
         swipeToDelete();
 
@@ -79,7 +79,7 @@ public class MainActivity extends Activity implements TaskSelector {
             String taskName = taskNameED.getText().toString();
             String time = setTimeButton.getText().toString();
 
-            if (!taskName.isEmpty() && minutes != null && !time.equals("Set time")) {
+            if (!taskName.isEmpty() && !time.equals("Set time")) {
                 TaskModel newTask = new TaskModel(taskName, time, "Today");
                 newTask.setId(String.valueOf(databaseAdapter.insertRow(newTask)));
                 DataHolder.tasks.add(newTask);
@@ -89,13 +89,13 @@ public class MainActivity extends Activity implements TaskSelector {
                 setTimeButton.setText(getResources().getString(R.string.set_time));
             }
 
-            greetingCheck();
+            emptyListCheck();
 
         });
 
         setTimeButton.setOnClickListener(v -> timePicker());
 
-        homeButton.setOnClickListener(v -> todaySectionRecyclerViewAdapter.notifyItemChanged(taskPosition));
+        homeButton.setOnClickListener(v -> {});
 
     }
 
@@ -145,13 +145,13 @@ public class MainActivity extends Activity implements TaskSelector {
                 DataHolder.tasks.remove(position);
                 databaseAdapter.remove(task.getId());
                 todaySectionRecyclerViewAdapter.notifyItemRemoved(position);
-                greetingCheck();
+                emptyListCheck();
             }
         }).attachToRecyclerView(todayRecyclerView);
 
     }
 
-    private void greetingCheck() {
+    private void emptyListCheck() {
         if (DataHolder.tasks.size() > 0) {
             userNameTV.setVisibility(View.INVISIBLE);
             greetingTV.setVisibility(View.INVISIBLE);
@@ -170,6 +170,12 @@ public class MainActivity extends Activity implements TaskSelector {
         intent.putExtra("ID", DataHolder.tasks.get(position).getId());
         startActivity(intent);
         taskPosition = position;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        todaySectionRecyclerViewAdapter.notifyItemChanged(taskPosition);
     }
 
 }
